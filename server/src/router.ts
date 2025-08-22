@@ -9,6 +9,7 @@ const router = express.Router();
 // Define item-related routes
 import itemActions from "./modules/item/itemActions";
 import userAction from "./modules/item/user/userAction";
+import validation from "./utils/validation";
 
 router.get("/api/items", itemActions.browse);
 router.get("/api/items/:id", itemActions.read);
@@ -16,6 +17,5 @@ router.post("/api/items", itemActions.add);
 
 /* ************************************************************************* */
 
-router.post("/user", userAction.add);
-
+router.post("/user", validation.userValidation, userAction.add);
 export default router;
